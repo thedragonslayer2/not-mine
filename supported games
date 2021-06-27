@@ -1,4 +1,7 @@
 if game.PlaceId == 6507422231 then
     wait(3)
     loadstring(game:HttpGet"https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Twilight%20Daycare")()
+elseif game.PlaceId == 3729611454 or game.PlaceId == 721345179 or game.PlaceId == 277751860 then
+    wait(3)
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Epic%20Minigames")()
 end
