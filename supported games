@@ -1,3 +1,4 @@
 if game.PlaceId == 6507422231 then
+    wait(3)
     loadstring(game:HttpGet"https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Twilight%20Daycare")()
 end
