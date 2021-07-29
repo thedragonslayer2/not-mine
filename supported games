@@ -1,5 +1,24 @@
-if game.PlaceId == 6507422231 then
-    loadstring(game:HttpGet"https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Twilight%20Daycare")()
-elseif game.PlaceId == 3729611454 or game.PlaceId == 721345179 or game.PlaceId == 277751860 then
-    loadstring(game:HttpGet"https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Epic%20Minigames")()
+local detectgames = {
+	["Twilight Daycare"] = {
+		["GameID"] = "6507422231",
+		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Twilight%20Daycare"
+	},
+	["Epic Minigames"] = {
+		["GameID"] = "3729611454",
+		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Epic%20Minigames"
+	}
+}
+for name, data in next, detectgames do
+	local pages = game:GetService"AssetService":GetGamePlacesAsync()
+	while wait() do
+		for i, place in pairs(pages:GetCurrentPage()) do
+			if place.PlaceId == tonumber(data.GameID) then
+				warn("Executing " .. name .. " Script!")
+				return loadstring(game:HttpGet(data.Link))()
+			end
+		end
+		if pages.IsFinished then break end
+		pages:AdvanceToNextPageAsync()
+	end
 end
+return true
