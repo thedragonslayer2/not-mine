@@ -6,6 +6,10 @@ local detectgames = {
 	["Epic Minigames"] = {
 		["GameID"] = "3729611454",
 		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Epic%20Minigames"
+	},
+	["Animal Simulator"] = {
+		["GameID"] = "5712833750",
+		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Animal%20Simulator"
 	}
 }
 for name, data in next, detectgames do
