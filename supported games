@@ -1,32 +1,31 @@
 local detectgames = {
-	["Twilight Daycare"] = {
-		["GameID"] = "6507422231",
+	["6507422231"] = {
+		["Game Name"] = "Twilight Daycare",
 		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Twilight%20Daycare"
 	},
-	["Epic Minigames"] = {
-		["GameID"] = "3729611454",
+	["3729611454"] = {
+		["Game Name"] = "Epic Minigames",
 		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Epic%20Minigames"
 	},
-	["Animal Simulator"] = {
-		["GameID"] = "5712833750",
+	["5712833750"] = {
+		["Game Name"] = "Animal Simulator",
 		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Animal%20Simulator"
 	},
-	["Creatures of Sonaria"] = {
-		["GameID"] = "5233782396",
+	["5233782396"] = {
+		["Game Name"] = "Creatures of Sonaria",
 		["Link"] = "https://raw.githubusercontent.com/thedragonslayer2/not-mine/main/games/Creatures%20of%20Sonaria"
 	}
 }
-for name, data in next, detectgames do
-	local pages = game:GetService"AssetService":GetGamePlacesAsync()
-	while wait() do
-		for i, place in pairs(pages:GetCurrentPage()) do
-			if place.PlaceId == tonumber(data.GameID) then
-				warn("Executing " .. name .. " Script!")
-				return loadstring(game:HttpGet(data.Link))()
-			end
+local pages = game:GetService"AssetService":GetGamePlacesAsync()
+while wait() do
+	for i, place in pairs(pages:GetCurrentPage()) do
+		local gotgame = detectgames[tostring(place.PlaceId)]
+		if gotgame then
+			warn("\n\n\nExecuting " .. gotgame["Game Name"] .. " Script!\n\n\n")
+			return loadstring(game:HttpGet(gotgame.Link))()
 		end
-		if pages.IsFinished then break end
-		pages:AdvanceToNextPageAsync()
 	end
+	if pages.IsFinished then break end
+	pages:AdvanceToNextPageAsync()
 end
 return true
